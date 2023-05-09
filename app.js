@@ -22,6 +22,12 @@ createApp({
                 .then((response) => console.log(response))
                 .catch((error) => console.error(error.message));
         },
+        deleteTask(index) {
+            this.newTasks.splice(index, 1);
+        },
+        toggleTaskStatus(index) {
+            this.newTasks[index].status = this.newTasks[index].status === "true" ? "false" : "true";
+        },
     },
     mounted() {
         axios

@@ -27,8 +27,11 @@
     <div id="app">
 
 
-        <div class="container pt-5">
+        <div class="container w-50 pt-5">
             <div class="card my_card shadow">
+                <div class="card-header text-center text-bg-warning ">
+                    <h1>TODO LIST</h1>
+                </div>
                 <div class="card-body">
                     <form class="d-flex justify-content-center my-3">
                         <input type="text" class="form-control w-75" v-model="newTaskContent">
@@ -36,11 +39,17 @@
                             Task</button>
                     </form>
                     <ul>
-                        <li v-for="Task in newTasks" class="d-flex justify-content-between my-1 ">
-                            <span>{{ Task.todo }}</span>
-                            <button class="btn btn-danger">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
+                        <li v-for="(task, index) in newTasks" :class="{ 'completed': task.status === 'true' }"
+                            class="d-flex justify-content-between my-1 ">
+                            <span @click="toggleTaskStatus(index)">{{ task.todo }}</span>
+                            <div>
+                                <button class="btn btn-success mx-1" @click="toggleTaskStatus(index)">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                                <button class="btn btn-danger mx-1" @click="deleteTask(index)">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
 
                         </li>
                     </ul>
