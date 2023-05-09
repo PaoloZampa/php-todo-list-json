@@ -28,14 +28,21 @@
 
 
         <div class="container pt-5">
-            <div class="card my_card">
+            <div class="card my_card shadow">
                 <div class="card-body">
-                    <form class="d-flex justify-content-center ">
+                    <form class="d-flex justify-content-center my-3">
                         <input type="text" class="form-control w-75" v-model="newTaskContent">
-                        <button class="btn btn-primary ms-1 " @keyDownEnter="addNewTaskToDo" @click="addNewTaskToDo">Add Task</button>
+                        <button class="btn btn-primary ms-1 " @keyDownEnter="addNewTaskToDo" @click="addNewTaskToDo">Add
+                            Task</button>
                     </form>
                     <ul>
-                        <li v-for="Task in newTasks">{{ Task.todo }}</li>
+                        <li v-for="Task in newTasks" class="d-flex justify-content-between my-1 ">
+                            <span>{{ Task.todo }}</span>
+                            <button class="btn btn-danger">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+
+                        </li>
                     </ul>
                 </div>
             </div>
